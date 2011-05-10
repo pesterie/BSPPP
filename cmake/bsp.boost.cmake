@@ -7,7 +7,7 @@
 
 SET(Boost_ADDITIONAL_VERSIONS "1.43" "1.43.0")
 INCLUDE(FindBoost)
-FIND_PACKAGE( Boost 1.43.0 REQUIRED serialization mpi program_options )
+FIND_PACKAGE( Boost 1.43.0 REQUIRED mpi serialization program_options )
 
 IF(Boost_FOUND)
  SET(BSP_HAS_BOOST TRUE)

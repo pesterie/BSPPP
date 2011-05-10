@@ -5,6 +5,7 @@
 #                     http://www.boost.org/LICENSE_1_0.txt
 ################################################################################
 INCLUDE(FindMPI)
+FIND_PACKAGE(MPI)
 
 IF(MPI_FOUND)
  SET(BSP_HAS_MPI TRUE)
