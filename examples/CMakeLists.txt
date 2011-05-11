@@ -42,7 +42,7 @@ ENDFOREACH()
 # Examples for MPI
 ################################################################################
 SET(SOURCES_MPI
-    #gmm.cpp
+    gmm.cpp
     #hello.cpp
     inprod.cpp
     #psrs.cpp
@@ -71,7 +71,7 @@ ENDFOREACH()
 # Examples for OMP
 ################################################################################
 SET(SOURCES_OMP
-    #gmm.cpp
+    gmm.cpp
     #hello.cpp
     inprod.cpp
     #psrs.cpp

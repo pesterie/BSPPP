@@ -76,11 +76,11 @@ namespace bsp
    using OMP::bsp::put;                \
    using OMP::bsp::proj;                \
    using OMP::bsp::synchronize; \
-    using OMP::bsp::result_of_proj;    \
-    using OMP::bsp::result_of_put;    \
- using OMP::bsp::result_of_split;\
- using OMP::bsp::split; \
- using OMP::bsp::linear; \
+   using OMP::bsp::result_of_proj;    \
+   using OMP::bsp::result_of_put;     \
+   using OMP::bsp::result_of_split;   \
+   using OMP::bsp::split;             \
+   using OMP::bsp::linear;            \
    /**/
 
 

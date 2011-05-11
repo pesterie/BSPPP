@@ -17,9 +17,6 @@
 namespace OMP { namespace bsp
 {
 
-
-
-
   struct split_
   {
     template<class Sig> struct result;
@@ -39,7 +36,6 @@ namespace OMP { namespace bsp
       return that;
     }
 
-    ///
     template<class Value,class Splitter> inline
     typename result<split_(Value,Splitter)>::type
     operator()(Value & v, Splitter s) const
@@ -78,81 +74,69 @@ namespace OMP { namespace bsp
   }
 
 
-
-
   /// linear spliter ///
   struct linear
-{
-  template<class Sig> struct result;
-  template<class This,class Value>
-  struct result<This(Value,std::size_t,std::size_t)>
   {
-    typedef typename boost::mpl::if_<
-                               boost::is_range<Value>
-                             , typename boost::iterator_range< typename boost::range_iterator<Value >::type >
-                             , Value
-                             >::type type;
-
-
+    template<class Sig> struct result;
+    template<class This,class Value>
+    struct result<This(Value,std::size_t,std::size_t)>
+    {
+      typedef typename boost::mpl::if_<
+                                       boost::is_range<Value>
+                                       , typename boost::iterator_range< typename boost::range_iterator<Value >::type >
+                                       , Value
+                                      >::type type;
 
    // typedef boost::iterator_range< typename boost::range_iterator<Value const>::type > type;
+    };
+    
+    template<class Value> inline
+    typename result<linear(Value,std::size_t,std::size_t)>::type
+    eval(Value const& v, std::size_t pid,std::size_t sz,boost::mpl::true_ const& ) const
+    {
+      std::size_t rs = boost::size(v)/sz;
+      return boost::adaptors::slice(v,pid*rs,(pid+1)*rs);
+    }
+    
+    template<class Value> inline
+    typename result<linear(Value,std::size_t,std::size_t)>::type
+    eval(Value const& v, std::size_t pid,std::size_t sz,boost::mpl::false_ const& ) const
+    {
+      return v;
+    }
+    
+    template<class Value> inline
+    typename result<linear(Value,std::size_t,std::size_t)>::type
+    operator()(Value const& v, std::size_t pid,std::size_t sz) const
+    {
+      return eval(v,pid,sz,typename boost::is_range<Value>::type());
+    }
+
+    template<class Value> inline
+    typename result<linear(Value,std::size_t,std::size_t)>::type
+    eval(Value & v, std::size_t pid,std::size_t sz,boost::mpl::true_ const& ) const
+    {
+      std::size_t rs = boost::size(v)/sz;
+      return boost::adaptors::slice(v,pid*rs,(pid+1)*rs);
+    }
+    
+    template<class Value> inline
+    typename result<linear(Value,std::size_t,std::size_t)>::type
+    eval(Value & v, std::size_t pid,std::size_t sz,boost::mpl::false_ const& ) const
+    {
+      return v;
+    }
+
+    template<class Value> inline
+    typename result<linear(Value,std::size_t,std::size_t)>::type
+    operator()(Value & v, std::size_t pid,std::size_t sz) const
+    {
+      return eval(v,pid,sz,typename boost::is_range<Value>::type());
+    }
+    
+    
   };
-
-  template<class Value> inline
-  typename result<linear(Value,std::size_t,std::size_t)>::type
-  eval(Value const& v, std::size_t pid,std::size_t sz,boost::mpl::true_ const& ) const
-  {
-    std::size_t rs = boost::size(v)/sz;
-    return boost::adaptors::slice(v,pid*rs,(pid+1)*rs);
-  }
-
-  template<class Value> inline
-  typename result<linear(Value,std::size_t,std::size_t)>::type
-  eval(Value const& v, std::size_t pid,std::size_t sz,boost::mpl::false_ const& ) const
-  {
-
-    return v;
-  }
-
-  template<class Value> inline
-  typename result<linear(Value,std::size_t,std::size_t)>::type
-  operator()(Value const& v, std::size_t pid,std::size_t sz) const
-  {
-    return eval(v,pid,sz,typename boost::is_range<Value>::type());
-  }
-
-
-  ////
-  template<class Value> inline
-  typename result<linear(Value,std::size_t,std::size_t)>::type
-  eval(Value & v, std::size_t pid,std::size_t sz,boost::mpl::true_ const& ) const
-  {
-    std::size_t rs = boost::size(v)/sz;
-    return boost::adaptors::slice(v,pid*rs,(pid+1)*rs);
-  }
-
-  template<class Value> inline
-  typename result<linear(Value,std::size_t,std::size_t)>::type
-  eval(Value & v, std::size_t pid,std::size_t sz,boost::mpl::false_ const& ) const
-  {
-
-    return v;
-  }
-
-
-  template<class Value> inline
-  typename result<linear(Value,std::size_t,std::size_t)>::type
-  operator()(Value & v, std::size_t pid,std::size_t sz) const
-  {
-    return eval(v,pid,sz,typename boost::is_range<Value>::type());
-  }
-
-
-};
-
-
-
-}
-}
+  
+} }
 
 #endif

@@ -19,10 +19,8 @@ namespace MPI
 {
 namespace bsp
 {
-
   namespace details
   {  //////////// plus
-
 
     template<class T> class buffer
     {
@@ -34,7 +32,7 @@ namespace bsp
       typedef T*          iterator;
       typedef T const *   const_iterator;
 
-      buffer(size_t size) : size_(size) { /*details::alloc(data_,size_);*/alloc(data_,size_); }
+      buffer(size_t size) : size_(size) { alloc(data_,size_); }
       buffer& operator=( buffer src )   { swap(src); return *this;  } // no throws
 
       ~buffer() { release(data_); }

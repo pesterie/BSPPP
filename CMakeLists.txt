@@ -48,6 +48,8 @@ TARGET_LINK_LIBRARIES(bsppp_hyb ${Boost_LIBRARIES} ${MPI_LIBRARY})
 
 # Examples for the 3 versions
 
+ADD_CUSTOM_TARGET(examples)
+ADD_DEPENDENCIES(examples examples_omp examples_mpi examples_hyb)
 ADD_CUSTOM_TARGET(examples_omp)
 ADD_CUSTOM_TARGET(examples_mpi)
 ADD_CUSTOM_TARGET(examples_hyb)

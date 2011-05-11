@@ -29,7 +29,7 @@ namespace bsp
     struct runtime
     {
       static void startup(int argc, char** argv)
-      {/*
+      {
         po::options_description desc;
         desc.add_options()( "threads", po::value<int>());
 
@@ -38,7 +38,6 @@ namespace bsp
         po::notify(vm);
 
         if(vm.count("threads")) omp_set_num_threads(vm["threads"].as<int>());
-        */
       }
 
       static void shutdown() {}
@@ -46,14 +45,13 @@ namespace bsp
       static int pid()      { return omp_get_thread_num();  }
       static int size()     { return omp_get_num_threads(); }
       static double time()  {
-
-                              //static int sec = -1;
-                              struct timeval tv;
-                              gettimeofday(&tv, NULL);
-                              //if (sec < 0) sec = tv.tv_sec;
-                              return (tv.tv_sec/* - sec*/) + 1.0e-6*tv.tv_usec;
-
-                              }
+        //static int sec = -1;
+        struct timeval tv;
+        gettimeofday(&tv, NULL);
+        //if (sec < 0) sec = tv.tv_sec;
+        return (tv.tv_sec/* - sec*/) + 1.0e-6*tv.tv_usec;
+        
+      }
     };
   }
 }
