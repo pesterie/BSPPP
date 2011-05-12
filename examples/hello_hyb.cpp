@@ -11,13 +11,21 @@
 using namespace std;
 namespace bl = boost::lambda;
 
+void fun_omp(int argc, char** argv, int mpi_pid)
+{
+  BSP_HYB_START(argc,argv)
+    {
+      int omp_pid= pid();
+      int omp_size=size();
+      
+      cout<<"I'm thread rank "<<omp_pid<<" of MPI process rank "<<mpi_pid<<endl;
+    }
+  BSP_HYB_END()
+}
+
 int bsp_main(int argc, char** argv)
 {
-  par<int> a;
-  a=pid()*3;
-  
-  cout<<"I m process rank "<<pid()<<" of "<<size()<<"my local value of a is "<<*a<<endl;
+  fun_omp(argc, argv, pid());
   
   return 0;
 }
-
