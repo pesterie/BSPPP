@@ -12,11 +12,9 @@ INCLUDE_DIRECTORIES("${PROJECT_SOURCE_DIR}/include/")
 # Examples for Hybrid
 ################################################################################
 SET(SOURCES_HYB
-    #gmm.cpp
-    #hello.cpp
+    hello_hyb.cpp
     inprod.cpp
-    #psrs.cpp
-    #psrs_hyb.cpp
+    psrs_hyb.cpp
     )
 
 ################################################################################
@@ -43,10 +41,9 @@ ENDFOREACH()
 ################################################################################
 SET(SOURCES_MPI
     gmm.cpp
-    #hello.cpp
+    hello.cpp
     inprod.cpp
-    #psrs.cpp
-    #psrs_hyb.cpp
+    psrs.cpp
     )
 
 ################################################################################
@@ -72,10 +69,9 @@ ENDFOREACH()
 ################################################################################
 SET(SOURCES_OMP
     gmm.cpp
-    #hello.cpp
+    hello.cpp
     inprod.cpp
-    #psrs.cpp
-    #psrs_hyb.cpp
+    psrs.cpp
     )
 
 ################################################################################
