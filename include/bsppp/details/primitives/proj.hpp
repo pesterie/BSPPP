@@ -11,9 +11,10 @@
 #include <boost/ref.hpp>
 #include <bsppp/core/traits/is_par.hpp>
 #include <bsppp/details/memory/buffer.hpp>
-#include <bsppp/details/primitives/proj/mpi.hpp>
-#include <bsppp/details/primitives/proj/omp.hpp>
 #include <bsppp/details/primitives/proj/gpu.hpp>
+
+#if defined (BSP_MPI_TARGET) || defined(BSP_HYB_TARGET)
+#include <bsppp/details/primitives/proj/mpi.hpp>
 
 namespace MPI
 {
@@ -87,6 +88,9 @@ namespace bsp
   proj(T const& v)         { return boost::cref(v);    }
 }
 }
+#endif
+#if defined (BSP_OMP_TARGET) || defined(BSP_HYB_TARGET)
+#include <bsppp/details/primitives/proj/omp.hpp>
 
 namespace OMP
 {
@@ -160,5 +164,5 @@ namespace bsp
   proj(T const& v)         { return boost::cref(v);    }
 }
 }
-
+#endif
 #endif

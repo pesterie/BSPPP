@@ -7,7 +7,7 @@
  ******************************************************************************/
 #ifndef BSPPP_DETAILS_PRIMITIVES_SIZE_HPP_INCLUDED
 #define BSPPP_DETAILS_PRIMITIVES_SIZE_HPP_INCLUDED
-
+#if defined (BSP_MPI_TARGET) || defined(BSP_HYB_TARGET)
 namespace MPI
 {
 namespace bsp
@@ -18,6 +18,8 @@ namespace bsp
   int inline size() { return details::runtime::size(); }
 }
 }
+#endif
+#if defined (BSP_OMP_TARGET) || defined(BSP_HYB_TARGET)
 namespace OMP
 {
 namespace bsp
@@ -28,4 +30,5 @@ namespace bsp
   int inline size() { return details::runtime::size(); }
 }
 }
+#endif
 #endif

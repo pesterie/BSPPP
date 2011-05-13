@@ -8,7 +8,7 @@
 
 #include <bsppp/bsppp.hpp>
 
-#if defined(BSP_MPI_TARGET) or (BSP_HYB_TARGET)
+#if defined(BSP_MPI_TARGET) || defined(BSP_HYB_TARGET)
 
 /******************************************************************************
  * MPI Parallel environnement

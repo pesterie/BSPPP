@@ -1,3 +1,4 @@
+
 /******************************************************************************
  *         Copyright 2009      LRI    UMR 8623 CNRS/Univ Paris Sud XI
  *
@@ -13,6 +14,7 @@
 #include <bsppp/details/primitives/is_range.hpp>
 #include <boost/range/adaptor/sliced.hpp>
 
+#if defined (BSP_HYB_TARGET)
 
 namespace OMP { namespace bsp
 {
@@ -139,4 +141,5 @@ namespace OMP { namespace bsp
   
 } }
 
+#endif
 #endif

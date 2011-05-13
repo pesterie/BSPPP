@@ -10,6 +10,7 @@
 
 #include <bsppp/core/environment.hpp>
 
+#if defined (BSP_MPI_TARGET) || defined(BSP_HYB_TARGET)
 namespace MPI
 {
 namespace bsp
@@ -35,7 +36,8 @@ namespace bsp
   constant::pid_ const pid_ = {};
 }
 }
-
+#endif
+#if defined (BSP_OMP_TARGET) || defined(BSP_HYB_TARGET)
 namespace OMP
 {
 namespace bsp
@@ -61,4 +63,5 @@ namespace bsp
   constant::pid_ const pid_ = {};
 }
 }
+#endif
 #endif

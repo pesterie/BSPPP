@@ -12,7 +12,7 @@
 #include <bsppp/details/memory/buffer.hpp>
 #include <bsppp/details/primitives/put/par.hpp>
 #include <bsppp/core/traits/is_bsp_callable.hpp>
-
+#if defined (BSP_MPI_TARGET) || defined(BSP_HYB_TARGET)
 namespace MPI
 {
 namespace bsp
@@ -37,7 +37,8 @@ namespace bsp
   }
 }
 }
-
+#endif
+#if defined (BSP_OMP_TARGET) || defined(BSP_HYB_TARGET)
 namespace OMP
 {
 namespace bsp
@@ -62,5 +63,5 @@ namespace bsp
    }
 }
 }
-
+#endif
 #endif

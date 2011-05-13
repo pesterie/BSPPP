@@ -8,8 +8,12 @@
 #ifndef BSPPP_DETAILS_PRIMITIVES_SYNC_HPP_INCLUDED
 #define BSPPP_DETAILS_PRIMITIVES_SYNC_HPP_INCLUDED
 
+#if defined (BSP_MPI_TARGET) || defined(BSP_HYB_TARGET)
 #include <bsppp/details/primitives/sync/mpi.hpp>
+#endif
+#if defined (BSP_OMP_TARGET) || defined(BSP_HYB_TARGET)
 #include <bsppp/details/primitives/sync/omp.hpp>
+#endif
 #include <bsppp/details/primitives/sync/gpu.hpp>
 
 #endif

@@ -14,6 +14,8 @@
 
 #include <bsppp/details/memory/buffer.hpp>
 
+#if defined (BSP_OMP_TARGET) || defined(BSP_HYB_TARGET)
+
 namespace OMP
 {
 namespace bsp
@@ -37,6 +39,6 @@ namespace bsp
   }
 }
 }
-
+#endif
 #endif
 

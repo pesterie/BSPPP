@@ -39,7 +39,8 @@
  using OMP::bsp::synchronize;
  using OMP::bsp::result_of_proj;
  using OMP::bsp::result_of_put;
+#endif
+#if defined(BSP_HYB_TARGET)
  using OMP::bsp::result_of_split;
 #endif
-
 #endif

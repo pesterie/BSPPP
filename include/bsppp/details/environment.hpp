@@ -13,9 +13,11 @@
 // When compiling a BSP++ programm, user must specify the parallel target on
 // which the program has to be run.
 ////////////////////////////////////////////////////////////////////////////////
-#include <bsppp/details/env/mpi.hpp>
-#include <bsppp/details/env/omp.hpp>
+
 #include <bsppp/details/env/gpu.hpp>
+
+#if defined (BSP_MPI_TARGET) || defined(BSP_HYB_TARGET)
+#include <bsppp/details/env/mpi.hpp>
 
 namespace MPI
 {
@@ -31,6 +33,10 @@ namespace bsp
   }
 }
 }
+
+#endif
+#if defined (BSP_OMP_TARGET) || defined(BSP_HYB_TARGET)
+#include <bsppp/details/env/omp.hpp>
 
 namespace OMP
 {
@@ -49,4 +55,5 @@ namespace bsp
 }
 }
 
+#endif
 #endif

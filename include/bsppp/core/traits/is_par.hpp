@@ -12,7 +12,7 @@
 #include <boost/type_traits/integral_constant.hpp>
 #include <bsppp/core/pid.hpp>
 
-
+#if defined (BSP_MPI_TARGET) || defined(BSP_HYB_TARGET)
 
 namespace MPI
 {
@@ -41,6 +41,8 @@ namespace bsp
 
 }
 
+#endif
+#if defined (BSP_OMP_TARGET) || defined(BSP_HYB_TARGET)
 
 namespace OMP
 {
@@ -69,5 +71,6 @@ namespace bsp
 
 }
 
+#endif
 
 #endif

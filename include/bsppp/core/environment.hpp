@@ -30,7 +30,7 @@ for(; !stop_; stop_ = true)                                         \
  BSP_STARTUP()
 
 
-
+#if defined (BSP_MPI_TARGET) || defined(BSP_HYB_TARGET)
 
 namespace MPI
 {
@@ -44,7 +44,8 @@ namespace bsp
   double inline time() { return details::runtime::time(); }
 }
 }
-
+#endif
+#if defined (BSP_OMP_TARGET) || defined(BSP_HYB_TARGET)
 namespace OMP
 {
 namespace bsp
@@ -58,6 +59,6 @@ namespace bsp
 }
 }                                                     \
 
-
+#endif
 
 #endif
