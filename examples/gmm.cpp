@@ -6,6 +6,7 @@
  *                     http://www.boost.org/LICENSE_1_0.txt
  ******************************************************************************/
 #include <iostream>
+#include <cmath>
 #include <bsppp/bsppp.hpp>
 #include "data.hpp"
 #include <algorithm>
